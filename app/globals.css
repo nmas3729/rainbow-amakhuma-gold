@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold-primary: #C6A43B;
+  --color-gold-dark: #9C7C2E;
+  --color-gold-light: #E5C97E;
+  --color-gold-glow: rgba(198, 164, 59, 0.15);
+  --color-charcoal: #1E1E1E;
+  --color-dark-bg: #0A0A0A;
+  --color-stone: #2C2C2C;
+  
+  --font-playfair: var(--font-playfair), serif;
+  --font-jakarta: var(--font-jakarta), sans-serif;
+}
+
+@layer base {
+  :root {
+    --gold-primary: #C6A43B;
+    --gold-dark: #9C7C2E;
+    --gold-light: #E5C97E;
+    --gold-glow: rgba(198, 164, 59, 0.15);
+    --charcoal: #1E1E1E;
+    --dark-bg: #0A0A0A;
+    --stone: #2C2C2C;
+  }
+
+  * {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-charcoal antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair), serif;
+    font-weight: 700;
+  }
+
+  p, a, span, button, input, textarea {
+    font-family: var(--font-jakarta), sans-serif;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .gradient-gold {
+    @apply bg-gradient-to-r from-gold-dark via-gold-primary to-gold-light;
+  }
+
+  .gradient-gold-text {
+    @apply bg-gradient-to-r from-gold-dark via-gold-primary to-gold-light bg-clip-text text-transparent;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .gold-border {
+    @apply border border-gold-primary/30;
+  }
+
+  .gold-border-thin {
+    @apply border border-gold-primary/20;
+  }
+
+  .gold-shadow {
+    @apply shadow-lg shadow-gold-glow;
+  }
+
+  /* Fix for fixed header anchor offset */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+}
+
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-600 { animation-delay: 0.6s; }
+.animation-delay-800 { animation-delay: 0.8s; }
